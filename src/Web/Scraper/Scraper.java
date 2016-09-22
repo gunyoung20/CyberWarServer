@@ -111,6 +111,8 @@ public class Scraper {
 			}
 			sleep(300);
 			buffer = dfh.readWebFile(dir, fileName);
+			if(buffer.contains(DeletedDocumentCode) || buffer.contains(BlindedDocumentCode))
+				return "";
 			if(checkErrorCode(buffer))
 			{
 				System.err.println("Access Error path : " + dir + " target : " + fileName);
@@ -123,7 +125,7 @@ public class Scraper {
 	}
 	public boolean checkErrorCode(String source)
 	{
-		String[] ErrorCode = {WebAccessDeniedCode, WebAccessErrorCode, DeletedDocumentCode, BlindedDocumentCode};
+		String[] ErrorCode = {WebAccessDeniedCode, WebAccessErrorCode};
 		if(source==null)
 		{
 			System.err.println("Access Error(No have data in file)");

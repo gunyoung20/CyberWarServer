@@ -82,7 +82,7 @@ public class CrawlerForOu extends Crawler {
 			// split part of document
 			url = documentUrlListOfPage.get(i);
 			sourceOfDocumentPage = scraper.readWebSite(url, "Document", mode);
-			if(sourceOfDocumentPage.getSource().contains(scraper.DeletedDocumentCode))
+			if(sourceOfDocumentPage.getSource().equals(""))
 			{
 				System.err.println("Deleted Document!! - " + url);
 				documentUrlListOfPage.remove(i--);
@@ -123,7 +123,7 @@ public class CrawlerForOu extends Crawler {
 
 		// split part of document
 		WebSource sourceOfDocumentPage = scraper.readWebSite(url, "Document", mode);
-		if(scraper.checkErrorCode(sourceOfDocumentPage.getSource()))
+		if(sourceOfDocumentPage.getSource().equals(""))
 			return null;
 
 		// Phase All Comments

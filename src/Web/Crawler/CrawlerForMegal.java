@@ -83,7 +83,7 @@ public class CrawlerForMegal extends Crawler{
 			// split part of document
 			url = documentUrlListOfPage.get(i);
 			sourceOfDocumentPage = scraper.readWebSite(url, "Document", mode);
-			if(scraper.checkErrorCode(sourceOfDocumentPage.getSource()))
+			if(sourceOfDocumentPage.getSource().equals(""))
 			{
 				System.err.println("Deleted Document!! - " + url);
 				documentUrlListOfPage.remove(i--);
@@ -126,6 +126,8 @@ public class CrawlerForMegal extends Crawler{
 
 		// split part of document
 		WebSource sourceOfDocumentPage = scraper.readWebSite(url, "Document", mode);
+		if(sourceOfDocumentPage.getSource().equals(""))
+			return null;
 					
 		// Phase All Comments
 		String table, tableId, memoUrl;

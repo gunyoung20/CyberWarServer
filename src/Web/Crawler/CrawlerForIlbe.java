@@ -78,6 +78,8 @@ public class CrawlerForIlbe extends Crawler {
 
 		// split part of document
 		WebSource sourceOfDocumentPage = scraper.readWebSite(url, "Document", mode);
+		if(sourceOfDocumentPage.getSource().equals(""))
+			return null;
 					
 		// Extract Comment Page Size
 		String sourceOfCommentPageSection = sourceOfDocumentPage.getSource().substring(
@@ -113,7 +115,7 @@ public class CrawlerForIlbe extends Crawler {
 			String url = documentUrlListOfPage.get(i);
 			// split part of document
 			WebSource sourceOfDocumentPage = scraper.readWebSite(url, "Document", mode);
-			if(scraper.checkErrorCode(sourceOfDocumentPage.getSource()))
+			if(sourceOfDocumentPage.getSource().equals(""))
 			{
 				System.err.println("Deleted Document!! - " + url);
 				documentUrlListOfPage.remove(i--);

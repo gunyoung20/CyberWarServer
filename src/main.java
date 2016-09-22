@@ -77,7 +77,7 @@ public class main {
 //				mode-1 : only phasing web sources without collecting web sources from web site on online.
 //				mode-2 : only phasing web sources without collecting web sources from offline such as file, DB.
 //				mode-3 : only collecting web sources from online.
-				es.execute(new ThreadMaker(objects[i], target[i][j], 10, 0));
+				es.execute(new ThreadMaker(objects[i], target[i][j], 0, 0));
 //				Future future = es.submit(new ThreadMaker(objects[i], target[i][j], 2));
 //				try{
 //					future.get();
